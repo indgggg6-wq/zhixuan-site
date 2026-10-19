@@ -1,0 +1,3 @@
+# 演示阶段：禁止搜索引擎收录（正式上线后把 config.json 的 noindex 改为 false）
+User-agent: *
+Disallow: /
