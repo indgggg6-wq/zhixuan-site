@@ -139,9 +139,11 @@
         '    <span>微信 <b class="mono">', CONFIG.wechat || '', '</b></span>',
         '    <button class="btn" type="button" data-cmodal-copy="wechat">复制</button>',
         '  </div>',
+        '  <div class="cmodal__qr', CONFIG.wechatQr ? '' : ' cmodal__qr--empty', '">',
         CONFIG.wechatQr
-          ? '<div class="cmodal__qr"><img src="' + ((body.getAttribute('data-base') || '') + CONFIG.wechatQr) + '" alt="微信二维码"></div>'
-          : '',
+          ? '<img src="' + ((body.getAttribute('data-base') || '') + CONFIG.wechatQr) + '" alt="微信二维码">'
+          : '<span>微信二维码</span><em>待上传</em>',
+        '  </div>',
         '  <p class="cmodal__state" aria-live="polite"></p>',
         '  <p class="cmodal__note">服务时间 ', CONFIG.hours || '', '</p>',
         '</div>',
