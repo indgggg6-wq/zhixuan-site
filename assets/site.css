@@ -672,7 +672,8 @@ ul, ol { padding: 0; list-style: none; }
   display: flex; align-items: center; gap: 28px;
   min-height: var(--header-h);
 }
-.wordmark { display: flex; align-items: baseline; gap: 10px; flex: none; }
+.wordmark { display: flex; align-items: center; gap: 9px; flex: none; }
+.brand__icon { width: 30px; height: 30px; flex: none; display: block; }
 .wordmark__name { font-size: 19px; font-weight: 600; letter-spacing: 0.02em; }
 .wordmark__region {
   font-size: var(--fs-xs); color: var(--mute);
