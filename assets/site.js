@@ -129,11 +129,17 @@
       contactModal.hidden = true;
       contactModal.innerHTML = [
         '<div class="cmodal__mask" data-cmodal-close></div>',
-        '<div class="cmodal__panel" role="dialog" aria-modal="true" aria-labelledby="cmodal-title">',
+        '<div class="cmodal__panel" role="dialog" aria-modal="true" aria-labelledby="cmodal-name">',
         '  <button class="cmodal__close" type="button" aria-label="关闭" data-cmodal-close>×</button>',
-        '  <p class="cmodal__title" id="cmodal-title">联系看房</p>',
-        '  <p class="cmodal__sub">用手机拨打，或加微信把需求发过来</p>',
-        '  <p class="cmodal__phone mono" data-cmodal-phone>', CONFIG.phone || '', '</p>',
+        '  <div class="cmodal__agent">',
+        '    <span class="cmodal__avatar"><img src="' + ((body.getAttribute('data-base') || '') + 'assets/brand/logo-icon-128.png') + '" alt=""></span>',
+        '    <span class="cmodal__badge">房源顾问</span>',
+        '  </div>',
+        '  <p class="cmodal__name" id="cmodal-name">', CONFIG.agentName || '智选网房源顾问', '</p>',
+        '  <p class="cmodal__exp">已帮助 ', CONFIG.servedCount || '300+', ' 位客户找到厂房</p>',
+        '  <div class="cmodal__chips"><span>房源真实</span><span>免费匹配</span><span>陪同看房</span></div>',
+        '  <p class="cmodal__area">主营区域：', CONFIG.agentArea || '南京 · 江宁', '</p>',
+        '  <p class="cmodal__phone mono">', CONFIG.phone || '', '</p>',
         '  <button class="btn btn--primary btn--block" type="button" data-cmodal-copy="phone">复制电话号码</button>',
         '  <div class="cmodal__row">',
         '    <span>微信 <b class="mono">', CONFIG.wechat || '', '</b></span>',
@@ -145,7 +151,7 @@
           : '<span>微信二维码</span><em>待上传</em>',
         '  </div>',
         '  <p class="cmodal__state" aria-live="polite"></p>',
-        '  <p class="cmodal__note">服务时间 ', CONFIG.hours || '', '</p>',
+        '  <p class="cmodal__note">1v1 专人服务 · 免费带看</p>',
         '</div>',
       ].join('');
       document.body.appendChild(contactModal);
