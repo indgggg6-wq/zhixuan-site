@@ -807,7 +807,7 @@ select.field__input { appearance: none; }
 .filters { background: var(--surface); border-block: 1px solid var(--line); }
 .filters__row {
   display: flex; align-items: flex-start; gap: 14px;
-  padding: 6px 0; border-bottom: 1px solid var(--line);
+  padding: 9px 0; border-bottom: 1px solid var(--line);
 }
 .filters__row:last-of-type { border-bottom: 0; }
 .filters__label { flex: none; width: 42px; font-size: var(--fs-sm); color: var(--mute); line-height: 28px; }
@@ -839,7 +839,7 @@ select.field__input { appearance: none; }
 }
 
 /* 6 · 房源列表（大图卡片 + 右侧信息栏） ------------------------------- */
-.list { padding: 18px 0 0; }
+.list { padding: 18px 0 26px; }
 .list-layout {
   display: grid; grid-template-columns: minmax(0, 1fr) 300px;
   gap: 26px; align-items: start;
@@ -896,7 +896,7 @@ select.field__input { appearance: none; }
 .text-btn { color: var(--brand); text-decoration: underline; text-underline-offset: 3px; }
 
 /* 6b · 品类入口 --------------------------------------------------------- */
-.cats { padding-top: 6px; }
+.cats { padding-top: 10px; padding-bottom: 22px; }
 .catbar { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
 .catbar__item {
   position: relative; display: flex; flex-direction: column; gap: 2px;

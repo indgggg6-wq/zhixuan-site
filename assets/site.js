@@ -454,6 +454,10 @@
   });
 
   var sorters = {
+    latest: function (a, b) {
+      var d = String(b.getAttribute('data-published') || '').localeCompare(String(a.getAttribute('data-published') || ''));
+      return d !== 0 ? d : Number(a.dataset.order) - Number(b.dataset.order);
+    },
     'area-desc': function (a, b) { return Number(b.getAttribute('data-area')) - Number(a.getAttribute('data-area')); },
     'area-asc': function (a, b) { return Number(a.getAttribute('data-area')) - Number(b.getAttribute('data-area')); },
     'price-asc': function (a, b) { return Number(a.getAttribute('data-price')) - Number(b.getAttribute('data-price')); },
@@ -477,7 +481,7 @@
     document.querySelectorAll('[data-cat]').forEach(function (b, i) { b.classList.toggle('is-on', i === 0); });
     Object.keys(state).forEach(function (g) { setPressed(g, 'all'); });
     syncBlocks();
-    if (sortSelect) sortSelect.value = 'default';
+    if (sortSelect) sortSelect.value = 'latest';
     rows.slice().sort(sorters.default).forEach(function (row) { rowsRoot.appendChild(row); });
     apply();
   };
