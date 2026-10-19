@@ -932,6 +932,13 @@ select.field__input { appearance: none; }
 }
 .aside-card { border: 1px solid var(--line); border-radius: var(--radius-lg); padding: 14px; background: var(--surface); }
 .aside-card__h { font-size: 15px; font-weight: 600; margin-bottom: 10px; }
+.map-mini {
+  position: relative; z-index: 0; height: 150px; border-radius: 10px; overflow: hidden;
+  margin-bottom: 10px; border: 1px solid var(--line); background: var(--surface-2);
+}
+.map-mini .leaflet-container { font: inherit; background: var(--surface-2); }
+.map-mini .leaflet-control-attribution { font-size: 9px; background: rgba(255,255,255,.75); }
+.map-mini .leaflet-bar a { line-height: 22px; width: 22px; height: 22px; font-size: 14px; }
 .map-ph {
   position: relative; height: 132px; border-radius: 10px; margin-bottom: 10px;
   background-color: var(--surface-2);

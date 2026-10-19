@@ -41,6 +41,37 @@
     });
   }
 
+  /* ---------- 首页小地图（按需加载 Leaflet）---------- */
+  var mapEl = document.getElementById('map-mini');
+  if (mapEl) {
+    var mapBase = body.getAttribute('data-base') || '';
+    var initMiniMap = function () {
+      if (!window.L) return;
+      var map = window.L.map('map-mini', {
+        scrollWheelZoom: false,
+        zoomControl: true,
+        attributionControl: true,
+      }).setView([31.87, 118.74], 11);
+      window.L.tileLayer('https://webrd0{s}.is.autonavi.com/appmaptile?lang=zh_cn&size=1&scale=1&style=8&x={x}&y={y}&z={z}', {
+        subdomains: ['1', '2', '3', '4'],
+        minZoom: 8,
+        maxZoom: 18,
+        attribution: '&copy; 高德地图',
+      }).addTo(map);
+      window.L.circleMarker([31.87, 118.74], {
+        radius: 7, color: '#ffffff', weight: 2, fillColor: '#6f8a78', fillOpacity: 1,
+      }).addTo(map).bindPopup('<b>江宁 · 谷里片区</b><br><a href="' + mapBase + 'area/jiangning.html">查看江宁房源</a>');
+    };
+    var leafletCss = document.createElement('link');
+    leafletCss.rel = 'stylesheet';
+    leafletCss.href = mapBase + 'assets/vendor/leaflet.css';
+    document.head.appendChild(leafletCss);
+    var leafletJs = document.createElement('script');
+    leafletJs.src = mapBase + 'assets/vendor/leaflet.js';
+    leafletJs.onload = initMiniMap;
+    document.body.appendChild(leafletJs);
+  }
+
   /* ---------- 配色切换 ---------- */
   var dock = document.querySelector('[data-theme-dock]');
   if (dock) {
