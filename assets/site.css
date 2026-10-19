@@ -1400,3 +1400,13 @@ select.field__input { appearance: none; }
   .hero-lead__form input { width: auto; flex: 1 1 150px; }
   .hero-lead__form .btn { flex: 0 0 auto; }
 }
+
+
+/* 18 · 区域预留页空态 ----------------------------------------------------- */
+.page-head__note { margin-top: 6px; font-size: 13px; color: var(--mute); }
+.area-empty {
+  border: 1px solid var(--line); border-radius: var(--radius-lg);
+  background: var(--surface); padding: 30px 24px; text-align: center;
+}
+.area-empty__t { font-size: 18px; font-weight: 600; }
+.area-empty__d { margin: 8px auto 18px; max-width: 42ch; font-size: 14px; color: var(--mute); line-height: 1.8; }
