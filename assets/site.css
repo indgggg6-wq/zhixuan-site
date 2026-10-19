@@ -1435,3 +1435,43 @@ select.field__input { appearance: none; }
 .nav__item:hover { background: var(--surface-2); }
 .nav__item b { font-size: 14px; font-weight: 600; color: var(--ink); }
 .nav__item span { font-size: 11px; color: var(--mute); }
+
+
+/* 20 · 首页服务流程与热门搜索 --------------------------------------------- */
+.how {
+  border-top: 1px solid var(--line); background: var(--surface);
+  padding-block: clamp(26px, 3.6vw, 40px);
+}
+.how__h { font-size: var(--fs-h2); font-weight: 600; }
+.how__steps {
+  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(16px, 3vw, 36px); margin-top: 18px;
+  counter-reset: how;
+}
+.how__steps li {
+  position: relative; padding-top: 14px;
+  border-top: 2px solid var(--brand);
+}
+.how__steps li::before {
+  counter-increment: how; content: "0" counter(how);
+  position: absolute; right: 0; top: 12px;
+  font-family: var(--font-mono); font-size: 12px; color: var(--faint);
+}
+.how__steps b { display: block; font-size: 16px; font-weight: 600; }
+.how__steps span { display: block; margin-top: 4px; font-size: 13px; color: var(--mute); }
+.how__tags {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 8px;
+  margin-top: 24px; padding-top: 16px; border-top: 1px solid var(--line);
+  font-size: 13px;
+}
+.how__tags > span { color: var(--faint); margin-right: 2px; }
+.how__tags a {
+  padding: 3px 11px; border: 1px solid var(--line); border-radius: 999px;
+  color: var(--ink-2);
+}
+.how__tags a:hover { color: var(--brand); border-color: var(--brand-line); background: var(--brand-soft); }
+
+@media (max-width: 760px) {
+  .how__steps { grid-template-columns: minmax(0, 1fr); gap: 12px; }
+  .how__steps li { padding-top: 10px; }
+}
