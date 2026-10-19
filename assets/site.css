@@ -933,7 +933,7 @@ select.field__input { appearance: none; }
 .aside-card { border: 1px solid var(--line); border-radius: var(--radius-lg); padding: 14px; background: var(--surface); }
 .aside-card__h { font-size: 15px; font-weight: 600; margin-bottom: 10px; }
 .map-mini {
-  position: relative; z-index: 0; height: 150px; border-radius: 10px; overflow: hidden;
+  position: relative; z-index: 0; height: 190px; border-radius: 10px; overflow: hidden;
   margin-bottom: 10px; border: 1px solid var(--line); background: var(--surface-2);
 }
 .map-mini .leaflet-container { font: inherit; background: var(--surface-2); }
@@ -1530,3 +1530,17 @@ select.field__input { appearance: none; }
 }
 .cmodal__panel .btn { margin-top: 12px; }
 .cmodal__note { margin-top: 10px; font-size: 12px; color: var(--faint); }
+
+
+/* 22 · 详情页位置地图 ----------------------------------------------------- */
+.map-detail {
+  position: relative; z-index: 0; height: 300px;
+  margin-top: 14px; border: 1px solid var(--line);
+  border-radius: 10px; overflow: hidden; background: var(--surface-2);
+}
+.map-detail .leaflet-container { font: inherit; background: var(--surface-2); }
+.map-detail .leaflet-control-attribution { font-size: 9px; background: rgba(255,255,255,.75); }
+
+@media (max-width: 760px) {
+  .map-detail { height: 220px; }
+}

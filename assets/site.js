@@ -41,35 +41,75 @@
     });
   }
 
-  /* ---------- 首页小地图（按需加载 Leaflet）---------- */
+  /* ---------- 地图（按需加载 Leaflet，首页与详情页共用）---------- */
+  var mapBase = body.getAttribute('data-base') || '';
+  var leafletQueue = [];
+  var leafletLoading = false;
+  var loadLeaflet = function (cb) {
+    if (window.L) { cb(); return; }
+    leafletQueue.push(cb);
+    if (leafletLoading) return;
+    leafletLoading = true;
+    var css = document.createElement('link');
+    css.rel = 'stylesheet';
+    css.href = mapBase + 'assets/vendor/leaflet.css';
+    document.head.appendChild(css);
+    var js = document.createElement('script');
+    js.src = mapBase + 'assets/vendor/leaflet.js';
+    js.onload = function () {
+      leafletQueue.forEach(function (fn) { fn(); });
+      leafletQueue = [];
+    };
+    document.body.appendChild(js);
+  };
+
+  var addTiles = function (map) {
+    window.L.tileLayer('https://webrd0{s}.is.autonavi.com/appmaptile?lang=zh_cn&size=1&scale=1&style=8&x={x}&y={y}&z={z}', {
+      subdomains: ['1', '2', '3', '4'],
+      minZoom: 8,
+      maxZoom: 18,
+      attribution: '&copy; 高德地图',
+    }).addTo(map);
+  };
+
+  var dot = function (lat, lng) {
+    return window.L.circleMarker([lat, lng], {
+      radius: 7, color: '#ffffff', weight: 2, fillColor: '#6f8a78', fillOpacity: 1,
+    });
+  };
+
   var mapEl = document.getElementById('map-mini');
   if (mapEl) {
-    var mapBase = body.getAttribute('data-base') || '';
-    var initMiniMap = function () {
-      if (!window.L) return;
-      var map = window.L.map('map-mini', {
-        scrollWheelZoom: false,
-        zoomControl: true,
-        attributionControl: true,
-      }).setView([31.87, 118.74], 11);
-      window.L.tileLayer('https://webrd0{s}.is.autonavi.com/appmaptile?lang=zh_cn&size=1&scale=1&style=8&x={x}&y={y}&z={z}', {
-        subdomains: ['1', '2', '3', '4'],
-        minZoom: 8,
-        maxZoom: 18,
-        attribution: '&copy; 高德地图',
-      }).addTo(map);
-      window.L.circleMarker([31.87, 118.74], {
-        radius: 7, color: '#ffffff', weight: 2, fillColor: '#6f8a78', fillOpacity: 1,
-      }).addTo(map).bindPopup('<b>江宁 · 谷里片区</b><br><a href="' + mapBase + 'area/jiangning.html">查看江宁房源</a>');
-    };
-    var leafletCss = document.createElement('link');
-    leafletCss.rel = 'stylesheet';
-    leafletCss.href = mapBase + 'assets/vendor/leaflet.css';
-    document.head.appendChild(leafletCss);
-    var leafletJs = document.createElement('script');
-    leafletJs.src = mapBase + 'assets/vendor/leaflet.js';
-    leafletJs.onload = initMiniMap;
-    document.body.appendChild(leafletJs);
+    loadLeaflet(function () {
+      var holder = document.getElementById('map-data');
+      var points = [];
+      try { points = holder ? JSON.parse(holder.textContent) : []; } catch (e) { points = []; }
+      var map = window.L.map('map-mini', { scrollWheelZoom: false, zoomControl: true })
+        .setView([31.87, 118.74], 11);
+      addTiles(map);
+      if (points.length) {
+        var bounds = [];
+        points.forEach(function (pt) {
+          dot(pt.lat, pt.lng).addTo(map)
+            .bindPopup('<b>' + pt.title + '</b><br><a href="' + pt.url + '">查看房源</a>');
+          bounds.push([pt.lat, pt.lng]);
+        });
+        if (bounds.length > 1) map.fitBounds(bounds, { padding: [26, 26] });
+      }
+    });
+  }
+
+  var detailMapEl = document.getElementById('detail-map');
+  if (detailMapEl) {
+    loadLeaflet(function () {
+      var lat = parseFloat(detailMapEl.getAttribute('data-lat'));
+      var lng = parseFloat(detailMapEl.getAttribute('data-lng'));
+      if (isNaN(lat) || isNaN(lng)) return;
+      var map = window.L.map('detail-map', { scrollWheelZoom: false, zoomControl: true })
+        .setView([lat, lng], 14);
+      addTiles(map);
+      dot(lat, lng).addTo(map).bindPopup(detailMapEl.getAttribute('data-address')).openPopup();
+    });
   }
 
   /* ---------- 配色切换 ---------- */
