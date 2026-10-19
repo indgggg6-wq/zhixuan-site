@@ -1331,10 +1331,12 @@ select.field__input { appearance: none; }
   color: #fff;
 }
 .hero__bg { position: absolute; inset: 0; z-index: 0; }
-.hero__bg img { width: 100%; height: 100%; object-fit: cover; filter: saturate(0.72) brightness(0.86); }
+.hero__bg img { width: 100%; height: 100%; object-fit: cover; object-position: center 58%; filter: saturate(0.85) brightness(0.92); }
 .hero__bg::after {
   content: ""; position: absolute; inset: 0;
-  background: linear-gradient(180deg, rgba(16, 22, 19, 0.66), rgba(16, 22, 19, 0.52));
+  background:
+    linear-gradient(90deg, rgba(14, 20, 18, 0.72) 0%, rgba(14, 20, 18, 0.42) 52%, rgba(14, 20, 18, 0.26) 100%),
+    linear-gradient(180deg, rgba(14, 20, 18, 0.30), rgba(14, 20, 18, 0.16));
 }
 .hero__inner { position: relative; z-index: 1; width: 100%; }
 .hero--photo .hero__kicker { color: rgba(255, 255, 255, 0.78); }
