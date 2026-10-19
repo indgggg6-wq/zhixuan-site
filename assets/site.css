@@ -1410,3 +1410,28 @@ select.field__input { appearance: none; }
 }
 .area-empty__t { font-size: 18px; font-weight: 600; }
 .area-empty__d { margin: 8px auto 18px; max-width: 42ch; font-size: 14px; color: var(--mute); line-height: 1.8; }
+
+
+/* 19 · 页眉区域下拉 ------------------------------------------------------- */
+.nav__drop { position: relative; display: inline-flex; align-items: center; }
+.nav__drop-btn { display: inline-flex; align-items: center; gap: 4px; }
+.caret {
+  width: 0; height: 0; margin-top: 2px;
+  border-left: 4px solid transparent; border-right: 4px solid transparent;
+  border-top: 5px solid currentColor;
+}
+.nav__menu {
+  position: absolute; left: -14px; top: calc(100% + 12px); z-index: 60;
+  width: 352px; padding: 10px;
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 12px;
+  box-shadow: 0 20px 48px rgba(30, 30, 28, 0.14);
+}
+.nav__grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 4px; }
+.nav__item {
+  display: flex; flex-direction: column; gap: 2px;
+  padding: 9px 10px; border-radius: 8px;
+}
+.nav__item:hover { background: var(--surface-2); }
+.nav__item b { font-size: 14px; font-weight: 600; color: var(--ink); }
+.nav__item span { font-size: 11px; color: var(--mute); }

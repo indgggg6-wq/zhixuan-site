@@ -18,6 +18,29 @@
     });
   }
 
+  /* ---------- 页眉区域下拉 ---------- */
+  var navDrop = document.querySelector('[data-nav-drop]');
+  if (navDrop) {
+    var dropBtn = navDrop.querySelector('.nav__drop-btn');
+    var dropMenu = navDrop.querySelector('.nav__menu');
+    var closeDrop = function () {
+      dropMenu.hidden = true;
+      dropBtn.setAttribute('aria-expanded', 'false');
+    };
+    dropBtn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      var open = !dropMenu.hidden;
+      dropMenu.hidden = open;
+      dropBtn.setAttribute('aria-expanded', String(!open));
+    });
+    document.addEventListener('click', function (e) {
+      if (!navDrop.contains(e.target)) closeDrop();
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') closeDrop();
+    });
+  }
+
   /* ---------- 配色切换 ---------- */
   var dock = document.querySelector('[data-theme-dock]');
   if (dock) {
