@@ -443,6 +443,27 @@
     });
   });
 
+  // 首屏搜索条：应用筛选并滚到列表
+  var heroSearch = document.querySelector('[data-hero-search]');
+  if (heroSearch) {
+    heroSearch.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var f = heroSearch.querySelector('[name="floor"]').value;
+      var d = heroSearch.querySelector('[name="district"]').value;
+      var a = heroSearch.querySelector('[name="area"]').value;
+      state.floor = f || 'all';
+      state.district = d || 'all';
+      state.area = a || 'all';
+      setPressed('floor', state.floor);
+      setPressed('district', state.district);
+      setPressed('area', state.area);
+      syncBlocks();
+      apply();
+      var target = document.getElementById('all-listings');
+      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  }
+
   filterRoot.addEventListener('click', function (e) {
     var btn = e.target.closest('[data-group]');
     if (!btn) return;

@@ -67,66 +67,53 @@
   <a class="mnav__tel" href="tel:13800000000"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg> 138 0000 0000</a>
 </nav>
 <main id="main">
-  <section class="hero">
-    <div class="wrap hero__grid">
-      <div class="hero__main">
-        <p class="hero__kicker">南京 · 厂房 · 仓库</p>
-        <h1 class="hero__title">南京厂房仓库出租</h1>
-        <p class="hero__desc">南京各区在租厂房，面积、层高、租金都写明。留电话，客服约看房。</p>
-        <ul class="hero__trust">
-          <li>房源方直供，参数如实填</li>
-          <li>面积、层高、租金都写明</li>
-          <li>留手机号，客服回电</li>
-        </ul>
-        <p class="hero__hot">
-          <span>热门</span>
-          <a href="?q=单层">单层厂房</a>
-          <a href="?q=一楼">一楼厂房</a>
-          <a href="?q=带行车">带行车</a>
-          <a href="?q=环氧地坪">环氧地坪</a>
-        </p>
-        <dl class="hero__stats">
-          <div><dt>在租</dt><dd><b class="num" data-count="22">22</b> 条</dd></div>
-          <div><dt>可租面积</dt><dd><b class="num" data-count="102300">102,300</b> ㎡</dd></div>
-          <div><dt>覆盖区域</dt><dd><b class="num" data-count="1">1</b> 个区</dd></div>
-          <div><dt>租金区间</dt><dd><b class="num">0.30–0.60</b> 元/㎡/天</dd></div>
-        </dl>
-      </div>
-      <aside class="hero__lead" id="lead-home">
-        
-<form class="lead" data-lead-form data-source="home" novalidate>
-  <div class="lead__head">
-    <p class="lead__title">免费获取报价</p>
-    <p class="lead__sub">22 条在租，客服按需求匹配后回电。</p>
-  </div>
-  <div class="lead__fields">
-    <label class="field">
-      <span class="field__label">手机号 <b>*</b></span>
-      <input class="field__input" type="tel" name="phone" inputmode="numeric" autocomplete="tel" maxlength="11" placeholder="11 位手机号" required>
-    </label>
-    <label class="field">
-      <span class="field__label">称呼</span>
-      <input class="field__input" type="text" name="name" maxlength="20" autocomplete="name" placeholder="如：王先生">
-    </label>
-    
-    <label class="field">
-      <span class="field__label">需求面积</span>
-      <select class="field__input" name="need">
-        <option value="">请选择</option>
-        <option>1000㎡ 以下</option>
-        <option>1000–3000㎡</option>
-        <option>3000–6000㎡</option>
-        <option>6000㎡ 以上</option>
-        <option>先了解行情</option>
-      </select>
-    </label>
-  </div>
-  <input class="honeypot" type="text" name="company" tabindex="-1" autocomplete="off" aria-hidden="true">
-  <button class="btn btn--primary btn--block" type="submit">免费获取报价</button>
-  <p class="lead__note">仅用于联系看房，不外传。提交即同意客服电话联系。</p>
-  <p class="lead__state" data-lead-state aria-live="polite"></p>
-</form>
-      </aside>
+  <section class="hero hero--photo">
+    <div class="hero__bg" aria-hidden="true">
+      <img src="assets/img/hero-warehouse.webp" alt="" width="1600" height="900" fetchpriority="high" decoding="async">
+    </div>
+    <div class="wrap hero__inner">
+      <p class="hero__kicker">南京 · 厂房 · 仓库</p>
+      <h1 class="hero__title">真实房源 参数写清 找厂房上智选网</h1>
+      <p class="hero__sub">南京各区在租厂房，面积、层高、租金都写明</p>
+
+      <form class="hero-search" data-hero-search>
+        <label>
+          <span>楼层</span>
+          <select name="floor">
+            <option value="all">全部</option>
+            <option value="first">一楼</option>
+            <option value="upper">楼上</option>
+            <option value="single">单层</option>
+          </select>
+        </label>
+        <label>
+          <span>区域</span>
+          <select name="district">
+            <option value="all">南京 / 全部</option>
+            <option value="江宁">江宁（22）</option>
+          </select>
+        </label>
+        <label>
+          <span>面积</span>
+          <select name="area">
+            <option value="all">不限</option>
+            <option value="s">3000㎡ 以下</option>
+            <option value="m">3000–6000㎡</option>
+            <option value="l">6000–10000㎡</option>
+            <option value="xl">10000㎡ 以上</option>
+          </select>
+        </label>
+        <button type="submit">搜索房源</button>
+      </form>
+
+      <form class="hero-inline" data-lead-form data-source="home-hero">
+        <input class="hero-inline__phone" type="tel" name="phone" inputmode="numeric" maxlength="11" placeholder="手机号，客服回电" aria-label="手机号">
+        <input class="honeypot" type="text" name="company" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <button class="btn btn--primary" type="submit">留电话</button>
+        <p class="lead__state" data-lead-state aria-live="polite"></p>
+      </form>
+
+      <p class="hero__statsline">在租 <b>22</b> 条 · 可租 <b>102,300</b> ㎡ · <b>0.30–0.60</b> 元/㎡/天</p>
     </div>
   </section>
 
