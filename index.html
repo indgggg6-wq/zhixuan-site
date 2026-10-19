@@ -106,12 +106,19 @@
         <button type="submit">搜索房源</button>
       </form>
 
-      <form class="hero-inline" data-lead-form data-source="home-hero">
-        <input class="hero-inline__phone" type="tel" name="phone" inputmode="numeric" maxlength="11" placeholder="手机号，客服回电" aria-label="手机号">
-        <input class="honeypot" type="text" name="company" tabindex="-1" autocomplete="off" aria-hidden="true">
-        <button class="btn btn--primary" type="submit">留电话</button>
-        <p class="lead__state" data-lead-state aria-live="polite"></p>
-      </form>
+      <div class="hero-lead">
+        <div class="hero-lead__text">
+          <p class="hero-lead__title">专业选厂，按需求匹配</p>
+          <p class="hero-lead__sub">说清面积和用途，客服匹配后回电</p>
+        </div>
+        <form class="hero-lead__form" data-lead-form data-source="home-hero">
+          <input type="tel" name="phone" inputmode="numeric" maxlength="11" placeholder="输入手机号" aria-label="手机号">
+          <input class="honeypot" type="text" name="company" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <button class="btn btn--primary" type="submit">获取匹配房源</button>
+          <p class="lead__state" data-lead-state aria-live="polite"></p>
+        </form>
+        <p class="hero-lead__note">客服 9:00–21:00 · 看房不收费 · 信息不外传</p>
+      </div>
 
       <p class="hero__statsline">在租 <b>22</b> 条 · 可租 <b>102,300</b> ㎡ · <b>0.30–0.60</b> 元/㎡/天</p>
     </div>
